@@ -1,0 +1,39 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" heigth="100%">
+	<l:Grid defaultSpan="L2">
+		<VBox class='settingsBox'>
+			<Label text="Chart Type" design="Bold" class='settingsLabel'></Label>
+			<RadioButtonGroup id='datasetRadioGroup'>
+				<buttons>
+				
+					<RadioButton class='settingsRadio' text="Column" select="onColSelected"/>
+					<RadioButton class='settingsRadio' text="Pie" select="onPieSelected"/>
+				</buttons>
+			</RadioButtonGroup>
+		</VBox>
+	</l:Grid>
+	<viz:Popover id="idPopOver"></viz:Popover>
+	<viz:VizFrame id="idVizFrame"  uiConfig="{applicationSet:'fiori'}"></viz:VizFrame><viz:Popover id="popOver"></viz:Popover>
+  <viz:VizFrame id="vizFrame" uiConfig="{applicationSet:'fiori'}"
+                vizType='bar' >
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{Model>/Cars}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Brands"
+                                value="{Model>Brand}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Cars Bought"
+                                value="{Model>Value}" />
+                           
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="Cars Bought" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="Brands" />
+                </viz:feeds>
+            </viz:VizFrame>
+</c:FragmentDefinition>

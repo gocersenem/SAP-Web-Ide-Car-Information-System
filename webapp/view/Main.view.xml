@@ -1,0 +1,112 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.f" xmlns:tnt="sap.tnt" controllerName="Arac.arac.controller.Main" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" heigth="100%">
+	<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master">
+		<detailPages >
+			<Page enableScrolling="true" id="detail" title="Detaylar" backgroundDesign="Solid">
+					
+		<l:Grid  defaultSpan="L2">
+						<Label width="30em" text="Ekspertiz Id" design="Bold"></Label>
+						<Label width="30em" text="{MainModel>/part/expertizid}"></Label>
+						<Label width="30em" text="Şasi No" design="Bold"></Label>
+						<Label width="30em" text="{MainModel>/part/sasi}"></Label>
+						<Label width="30em" text="Tutar" design="Bold"></Label>
+						<Label width="30em" text="{MainModel>/part/tutar}"></Label>
+					</l:Grid>		
+					<l:Grid defaultSpan="L2">
+						<Label text="Satış Danışmanı:" design="Bold"></Label>
+						<Label text="{MainModel>/part/satdanisman}"></Label>
+						<Label text="Müşteri" design="Bold"></Label>
+						<Label text="{MainModel>/part/musteri}"></Label>
+						<Label text="Araç Türü" design="Bold"></Label>
+						<Label text="{MainModel>/part/aractur}"></Label>
+					</l:Grid>		
+					<l:Grid defaultSpan="L2">
+						<Label text="Ekspertiz Danışmanı" design="Bold"></Label>
+						<Label text="{MainModel>/part/danisman}"></Label>
+						<Label text="Satıcı" design="Bold"></Label>
+						<Label text="{MainModel>/part/satici}"></Label>
+						<Label text="Plaka" design="Bold"></Label>
+						<Label text="{MainModel>/part/plaka}"></Label>
+					</l:Grid>	
+				<l:Grid defaultSpan="L6 M12 S12">
+					<Label text="Tutar" design="Bold"></Label>
+					<Input value="{MainModel>/part/tutar}" editable="false"></Input>
+				</l:Grid>
+	
+			
+				<IconTabBar id="idIconTabBarMulti" class="sapUiResponsiveContentPadding">
+					<items>
+						<IconTabFilter icon="sap-icon://visits" key="info">
+							<core:Fragment fragmentName="Arac.arac.view.Visit" type="XML"/>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://background" key="background">
+							<core:Fragment fragmentName="Arac.arac.view.Chart" type="XML"/>	
+          
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://pdf-attachment" key="pdf-attachment">
+							<Text text="Notes go here ..."/>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://hint" key="hint">
+							<Text text="People content goes here ..."/>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://car-rental" key="car-rental">
+							<Text text="People content goes here ..."/>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://collision" key="collision">
+							<Text text="People content goes here ..."/>
+						</IconTabFilter>
+						<IconTabFilter icon="sap-icon://decision" key="decision">
+							<Text text="People content goes here ..."/>
+						</IconTabFilter>
+					</items>
+				</IconTabBar>
+			
+	
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Onayla" press="accept"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>	
+		</detailPages>
+		<masterPages>
+			<Page id="master" title="Onayladıklarım ({MainModel>/count})" backgroundDesign="List">
+				<SearchField liveChange=".onSearch"></SearchField>
+				<List mode="SingleSelectMaster" selectionChange="selected" id="ShortProductList" items="{MainModel>/arac}">
+					<items>
+						<CustomListItem>
+							<Label text="Şasi No : " design="Bold"/>
+							<Label text=" {MainModel>sasi}"/>
+							<HBox>
+								<Label text="Plaka :" design="Bold"/>
+								<Label text=" {MainModel>plaka}"/></HBox>
+							<Label text="Ekspertiz Dnş :" design="Bold"/>
+							<Label text=" {MainModel>danisman}"/>
+							<HBox>
+								<Label text="Şube :" design="Bold"/>
+								<Label text=" {MainModel>sube}"/></HBox>
+							<Label text="Tarih :" design="Bold"/>
+							<Label text=" {MainModel>tarih}"/>
+						</CustomListItem>
+					</items>
+				</List>
+				<!--<f:GridList id="gridList" headerText="GridList header">-->
+				<!--	<f:GridListItem>-->
+				<!--		<Title text="Şasi No:" wrapping="true"/>-->
+				<!--		<Label text="128" wrapping="true"/>-->
+				<!--	</f:GridListItem>-->
+				<!--</f:GridList>-->
+				<footer>
+					<OverflowToolbar >
+						<ToolbarSpacer/>
+						<FlexBox alignItems="Center" justifyContent="Start">
+							<Button text="Filter" press="onSearch" icon="sap-icon://filter" width="23em"/>
+						</FlexBox>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>

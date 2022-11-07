@@ -1,0 +1,91 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:l="sap.ui.layout">
+	<l:Grid  defaultSpan="L5 M12 S12" hSpacing="0" >
+	<Panel width="45em"  >
+				<l:Grid   >
+				<Label design="Bold" text="Satış Danışmanı Notu"></Label>
+				<Input value="{MainModel>/entry/dannot}" editable="false"></Input>
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Yönetim Onay Notu"></Label>
+				<Input  value="{MainModel>/entry/yonnot}" editable="false"></Input>
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Şasi No"></Label>
+				<Input value="{MainModel>/entry/sasi}" editable="false"></Input>
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Plaka"></Label>
+				<Input  value="{MainModel>/entry/plaka}" editable="false"></Input>
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Araç Türü"></Label>
+				<Input value="{MainModel>/entry/aractur}"  editable="false"></Input>
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Marka"></Label>
+				<Input  value="{MainModel>/entry/marka}"  editable="false"></Input>
+			</l:Grid>
+			<l:Grid>
+				<Label design="Bold" text="Model"></Label>
+				<Input  value="{MainModel>/entry/model}"  editable="false"></Input>
+			</l:Grid>
+			<l:Grid>
+				<Label design="Bold" text="Model Yılı"></Label>
+				<Input  value="{MainModel>/entry/modelyili}" editable="false"></Input>
+			</l:Grid>	<l:Grid >
+				<Label design="Bold" text="Paket Bilgisi"></Label>
+				<Input value="{MainModel>/entry/paket}" editable="false"></Input>
+			</l:Grid>
+			<l:Grid>
+				<Label design="Bold" text="KM"></Label>
+				<Input  value="{MainModel>/entry/km}" editable="false"></Input>
+			</l:Grid>
+			<l:Grid>
+				<Label design="Bold" text="Tramer Tutar"></Label>
+				<Input  value="{MainModel>/entry/tramer}" editable="false"></Input>
+			</l:Grid>
+			<l:Grid>
+				<Label design="Bold" text="Ekspertiz Tarihi/Saati"></Label>
+				<Input  value="{MainModel>/entry/expertiztarih}  {MainModel>/entry/expertizsaat}" editable="false"></Input>
+				
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Ekspertiz Danışmanı"></Label>
+				<Input  value="{MainModel>/entry/danisman}" editable="false"></Input>
+			
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Açıklama"></Label>
+			<TextArea  editable="false" value="{MainModel>/entry/acik}" ></TextArea>
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Sunroof"></Label>
+			<CheckBox selected="{MainModel>/entry/sunroof}" editable="false"/>
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Yedek Anahtar Bilgisi"></Label>
+			<CheckBox selected="{MainModel>/entry/yedek}" editable="false" />
+			</l:Grid>
+			<l:Grid >
+				<Label design="Bold" text="Paket Tipi"></Label>
+				<Input editable="false" value="{MainModel>/entry/pakettip}"></Input>
+			</l:Grid>
+	</Panel>
+		<Panel width="auto">
+					<Table width="100%" mode="SingleSelectMaster" selectionChange="selectedMate" items="{MainModel>/materialsh}">
+			<columns>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Label design="Bold" text="Karakteristlik"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier text="{MainModel>Matnr}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+			</Panel>
+		</l:Grid>
+</c:FragmentDefinition>
